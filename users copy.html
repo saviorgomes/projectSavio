@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Listagem de Usuários</h1>
+<table border="1" style="width: 100%;">
+        <tr>
+            <th>Usuário</th>
+            <th>Ações</th>
+        </tr>
+        <tr>
+        {% for user in users %}
+        <tr>
+            {% for word in user.username.split() %}
+            <td style="text-align: center;" >{{ word }}</td>
+            {% endfor %}
+            <td style="text-align: center;"><a href="/delete/{{ user.username }}">Excluir</a></td>
+    {% endfor %}
+    </tr>
+
+<!-- </ul> -->
+</table>
+{% endblock %}
