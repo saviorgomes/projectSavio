@@ -1,0 +1,99 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "unique_dashboard_uid",
+    "title": "Metrics for Flask User Management",
+    "timezone": "browser",
+    "schemaVersion": 22,
+    "version": 0,
+    "refresh": "10s",
+    "panels": [
+      {
+        "id": 1,
+        "gridPos": {
+          "x": 0,
+          "y": 0,
+          "w": 12,
+          "h": 6
+        },
+        "title": "HTTP Requests by Login",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "sum(rate(flask_http_requests_total{job=\"flask-app\", operation=\"login\"}[1m]))",
+            "legendFormat": "Requests"
+          }
+        ],
+        "options": {
+          "showLegend": true
+        }
+      },
+      {
+        "id": 2,
+        "gridPos": {
+          "x": 0,
+          "y": 6,
+          "w": 12,
+          "h": 6
+        },
+        "title": "HTTP Requests by User Listing",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "sum(rate(flask_http_requests_total{job=\"flask-app\", operation=\"list_users\"}[1m]))",
+            "legendFormat": "Requests"
+          }
+        ],
+        "options": {
+          "showLegend": true
+        }
+      },
+      {
+        "id": 3,
+        "gridPos": {
+          "x": 0,
+          "y": 12,
+          "w": 12,
+          "h": 6
+        },
+        "title": "User Registrations",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "sum(rate(flask_user_registration_total{job=\"flask-app\"}[1m]))",
+            "legendFormat": "Registrations"
+          }
+        ],
+        "options": {
+          "showLegend": true
+        }
+      },
+      {
+        "id": 4,
+        "gridPos": {
+          "x": 0,
+          "y": 18,
+          "w": 12,
+          "h": 6
+        },
+        "title": "User Deletions",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "sum(rate(flask_user_deletion_total{job=\"flask-app\"}[1m]))",
+            "legendFormat": "Deletions"
+          }
+        ],
+        "options": {
+          "showLegend": true
+        }
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    }
+  },
+  "folderId": null,
+  "overwrite": false
+}
